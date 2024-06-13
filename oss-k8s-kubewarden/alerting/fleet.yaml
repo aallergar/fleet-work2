@@ -1,0 +1,15 @@
+defaultNamespace: kubewarden
+helm:
+  releaseName: namespace-alerting
+  repo: https://registry.claas.com/chartrepo/k8s-cluster-apps-production
+  chart: claas-namespace-alerting
+  version: 1.0.3
+  values:
+    receiver:
+      senderName: 'Kubewarden'
+      mainReceiver: 'opensourcesolutions@claas.com'
+    namespaces:
+    - name: 'kubewarden'
+      title: global.fleet.clusterLabels.claas.com/clustername
+    - name: 'open-telemetry'
+      title: global.fleet.clusterLabels.claas.com/clustername

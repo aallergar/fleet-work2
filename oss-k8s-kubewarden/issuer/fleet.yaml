@@ -1,0 +1,4 @@
+defaultNamespace: kubewarden
+
+helm:
+  releaseName: kubewarden-issuer

@@ -1,0 +1,29 @@
+# Enforcing policies
+{{ include "policy-do-not-run-as-root" (dict "name" "enforce" "privilegedNamespaces" (concat .Values.globalPrivilegedNamespaces .Values.clusterSpecificPrivilegedNamespaces) "enforce" true) }}
+{{ include "policy-do-not-share-host-paths" (dict "name" "enforce" "privilegedNamespaces" (concat .Values.globalPrivilegedNamespaces .Values.clusterSpecificPrivilegedNamespaces) "enforce" true) }}
+{{ include "policy-drop-capabilities" (dict "name" "enforce" "privilegedNamespaces" (concat .Values.globalPrivilegedNamespaces .Values.clusterSpecificPrivilegedNamespaces) "enforce" true) }}
+{{ include "policy-no-host-namespace-sharing" (dict "name" "enforce" "privilegedNamespaces" (concat .Values.globalPrivilegedNamespaces .Values.clusterSpecificPrivilegedNamespaces) "enforce" true) }}
+{{ include "policy-no-privilege-escalation" (dict "name" "enforce" "privilegedNamespaces" (concat .Values.globalPrivilegedNamespaces .Values.clusterSpecificPrivilegedNamespaces) "enforce" true) }}
+{{ include "policy-no-privileged-pod" (dict "name" "enforce" "privilegedNamespaces" (concat .Values.globalPrivilegedNamespaces .Values.clusterSpecificPrivilegedNamespaces) "enforce" true) }}
+
+# Audit policies (global)
+{{ include "policy-do-not-run-as-root" (dict "name" "audit-global" "privilegedNamespaces" .Values.globalPrivilegedNamespaces "enforce" false) }}
+{{ include "policy-do-not-share-host-paths" (dict "name" "audit-global" "privilegedNamespaces" .Values.globalPrivilegedNamespaces "enforce" false) }}
+{{ include "policy-drop-capabilities" (dict "name" "audit-global" "privilegedNamespaces" .Values.globalPrivilegedNamespaces "enforce" false) }}
+{{ include "policy-no-host-namespace-sharing" (dict "name" "audit-global" "privilegedNamespaces" .Values.globalPrivilegedNamespaces "enforce" false) }}
+{{ include "policy-no-privilege-escalation" (dict "name" "audit-global" "privilegedNamespaces" .Values.globalPrivilegedNamespaces "enforce" false) }}
+{{ include "policy-no-privileged-pod" (dict "name" "audit-global" "privilegedNamespaces" .Values.globalPrivilegedNamespaces "enforce" false) }}
+
+# Audit policies (cluster specific)
+{{- if not (empty .Values.clusterSpecificPrivilegedNamespaces) -}}
+{{ include "policy-do-not-run-as-root" (dict "name" "audit-cluster" "privilegedNamespaces" .Values.clusterSpecificPrivilegedNamespaces "enforce" false) }}
+{{ include "policy-do-not-share-host-paths" (dict "name" "audit-cluster" "privilegedNamespaces" .Values.clusterSpecificPrivilegedNamespaces "enforce" false) }}
+{{ include "policy-drop-capabilities" (dict "name" "audit-cluster" "privilegedNamespaces" .Values.clusterSpecificPrivilegedNamespaces "enforce" false) }}
+{{ include "policy-no-host-namespace-sharing" (dict "name" "audit-cluster" "privilegedNamespaces" .Values.clusterSpecificPrivilegedNamespaces "enforce" false) }}
+{{ include "policy-no-privilege-escalation" (dict "name" "audit-cluster" "privilegedNamespaces" .Values.clusterSpecificPrivilegedNamespaces "enforce" false) }}
+{{ include "policy-no-privileged-pod" (dict "name" "audit-cluster" "privilegedNamespaces" .Values.clusterSpecificPrivilegedNamespaces "enforce" false) }}
+{{- end -}}
+
+# Namespace label enforcement policies
+{{ include "policy-psa-label-enforcer" (dict "privilegedNamespaces" (concat .Values.globalPrivilegedNamespaces .Values.clusterSpecificPrivilegedNamespaces) "privileged" true) }}
+{{ include "policy-psa-label-enforcer" (dict "privilegedNamespaces" (concat .Values.globalPrivilegedNamespaces .Values.clusterSpecificPrivilegedNamespaces) "privileged" false) }}

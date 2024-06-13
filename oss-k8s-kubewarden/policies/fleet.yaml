@@ -1,0 +1,181 @@
+defaultNamespace: kubewarden
+
+helm:
+  releaseName: kubewarden-policies
+  chart: ./chart
+  valuesFiles:
+  - values.yaml
+
+targetCustomizations:
+- name: dehwl-k8-cl-m01
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: dehwl-k8-cl-m01
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces:
+      - cattle-fleet-system
+      - cattle-resources-system
+      - cattle-ui-plugin-system
+      - cis-operator-system
+- name: dehwl-k8-cl-m02
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: dehwl-k8-cl-m02
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces:
+      - cattle-fleet-system
+      - cattle-resources-system
+      - cattle-ui-plugin-system
+      - cis-operator-system
+- name: dehwl-k8-cl-d01
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: dehwl-k8-cl-d01
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces:
+      - kasten-io
+- name: dehwl-k8-cl-t01
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: dehwl-k8-cl-t01
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces:
+      - harbor-cluster
+      - postgres
+      - manual-nfs-provisioning # needed for preparation job - make a global exception?
+      - kasten-io
+- name: dehwl-k8-cl-p01
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: dehwl-k8-cl-p01
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces:
+      - harbor-cluster
+      - postgres
+      - manual-nfs-provisioning # needed for preparation job - make a global exception?
+- name: dehwl-k8-cl-p02
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: dehwl-k8-cl-p02
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces:
+      - azd-agents-development-ubuntu-2004
+      - azd-agents-development-ubuntu-2204
+      - azd-agents-development-ubuntu-2004-dev
+      - azd-agents-development-ubuntu-2004-preview
+      - azd-agents-development-ubuntu-2004-stage
+      - azd-agents-development-ubuntu-2204-dev
+      - azd-agents-development-ubuntu-2204-preview
+      - azd-agents-development-ubuntu-2404-dev
+      - azd-agents-development-ubuntu-2404-preview
+      - azd-agents-development-container-management
+      - azd-agents-mstfs-ubuntu-2004
+      - azd-agents-mstfs-ubuntu-2204
+      - azd-agents-claas-ubuntu-2004
+      - azd-agents-claas-ubuntu-2204      
+- name: aks-dev-k8s-oss-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-dev-k8s-oss-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces:
+      - kasten-io
+- name: aks-dev-k8s-digitalservicemanager-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-dev-k8s-digitalservicemanager-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-test-k8s-digitalservicemanager-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-test-k8s-digitalservicemanager-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-prod-k8s-digitalservicemanager-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-prod-k8s-digitalservicemanager-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-dev-k8s-claas-com-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-dev-k8s-claas-com-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces:
+      - jenkins
+- name: aks-test-k8s-claas-com-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-test-k8s-claas-com-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-prod-k8s-claas-com-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-prod-k8s-claas-com-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-dev-k8s-digitalecosys-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-dev-k8s-digitalecosys-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-test-k8s-digitalecosys-rc-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-test-k8s-digitalecosys-rc-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-prod-k8s-digitalecosys-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-prod-k8s-digitalecosys-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-test-kafka-claasconnect-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-test-kafka-claasconnect-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-prod-kafka-claasconnect-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-prod-kafka-claasconnect-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-test-kafka-remoteservice-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-test-kafka-remoteservice-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
+- name: aks-prod-kafka-remoteservice-001
+  clusterSelector:
+    matchLabels:
+      claas.com/clustername: aks-prod-kafka-remoteservice-001
+  helm:
+    values:
+      clusterSpecificPrivilegedNamespaces: []
