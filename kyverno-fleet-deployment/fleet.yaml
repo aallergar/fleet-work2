@@ -1,0 +1,22 @@
+defaultNamespace: amprion-policies
+helm:
+  releaseName: kyverno
+  version: 3.2.6
+  repo: https://kyverno.github.io/kyverno/
+  chart: kyverno
+
+  valuesFiles:
+    - helm-values.yaml
+
+diff:
+  comparePatches:
+    - apiVersion: kyverno.io/v1
+      kind: ClusterPolicy
+      # name: kyverno-cluster-policy
+      operations:
+        - { "op": "remove", "path": "/spec/rules" }
+    - apiVersion: kyverno.io/v1
+      kind: Policy
+      # name: kyverno-policy
+      operations:
+        - { "op": "remove", "path": "/spec/rules" }
