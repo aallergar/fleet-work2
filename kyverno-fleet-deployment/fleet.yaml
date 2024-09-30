@@ -6,7 +6,7 @@ helm:
   chart: kyverno
 
  valuesFiles:
-   - helm.yaml
+   - values.yaml
 
 # diff:
 #  comparePatches:
