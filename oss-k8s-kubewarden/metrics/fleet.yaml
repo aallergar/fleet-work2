@@ -1,4 +1,0 @@
-defaultNamespace: kubewarden
-
-helm:
-  releaseName: kubewarden-metrics

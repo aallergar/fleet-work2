@@ -1,8 +1,0 @@
-defaultNamespace: open-telemetry
-helm:
-  releaseName: open-telemetry-operator
-  chart: opentelemetry-operator
-  version: 0.33.0
-  repo: https://registry.claas.com/chartrepo/opensourcesolutions
-  valuesFiles:
-  - values.yaml

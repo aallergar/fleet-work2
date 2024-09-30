@@ -1,8 +1,0 @@
-defaultNamespace: kubewarden
-helm:
-  releaseName: kubewarden-defaults
-  chart: kubewarden-defaults
-  version: 2.0.0
-  repo: https://registry.claas.com/chartrepo/opensourcesolutions
-  valuesFiles:
-  - values.yaml

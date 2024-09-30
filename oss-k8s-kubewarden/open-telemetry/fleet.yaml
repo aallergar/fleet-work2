@@ -1,4 +1,0 @@
-defaultNamespace: open-telemetry
-
-helm:
-  releaseName: open-telemetry

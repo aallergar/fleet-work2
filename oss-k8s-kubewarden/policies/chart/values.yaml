@@ -1,4 +1,0 @@
-globalPrivilegedNamespaces:
-- example-privileged-namespace
-
-clusterSpecificPrivilegedNamespaces: []

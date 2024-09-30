@@ -1,7 +1,0 @@
-defaultNamespace: kubewarden
-
-helm:
-  releaseName: kubewarden-crds
-  chart: kubewarden-crds
-  version: 1.5.0
-  repo: https://registry.claas.com/chartrepo/opensourcesolutions
