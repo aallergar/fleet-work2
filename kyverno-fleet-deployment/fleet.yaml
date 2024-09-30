@@ -5,8 +5,8 @@ helm:
   repo: https://kyverno.github.io/kyverno/
   chart: kyverno
 
-  valuesFiles:
-    - helm-values.yaml
+ # valuesFiles:
+ #   - helm-values.yaml
 
 diff:
   comparePatches:
