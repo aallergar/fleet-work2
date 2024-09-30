@@ -8,15 +8,15 @@ helm:
  # valuesFiles:
  #   - helm-values.yaml
 
-diff:
-  comparePatches:
-    - apiVersion: kyverno.io/v1
-      kind: ClusterPolicy
+# diff:
+#  comparePatches:
+#    - apiVersion: kyverno.io/v1
+#     kind: ClusterPolicy
       # name: kyverno-cluster-policy
-      operations:
-        - { "op": "remove", "path": "/spec/rules" }
-    - apiVersion: kyverno.io/v1
-      kind: Policy
+#      operations:
+#        - { "op": "remove", "path": "/spec/rules" }
+#    - apiVersion: kyverno.io/v1
+#      kind: Policy
       # name: kyverno-policy
-      operations:
-        - { "op": "remove", "path": "/spec/rules" }
+#      operations:
+#        - { "op": "remove", "path": "/spec/rules" }
